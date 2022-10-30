@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ToDoList.Models\ToDoList.Models.csproj" />
+    <ProjectReference Include="..\Cataloguer.Models\Cataloguer.Models.csproj" />
   </ItemGroup>
 
 </Project>

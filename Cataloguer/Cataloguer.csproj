@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\ToDoList.Models\ToDoList.Models.csproj" />
+    <ProjectReference Include="..\Cataloguer.Models\Cataloguer.Models.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace ToDoList.API.Controllers;
+namespace Cataloguer.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]

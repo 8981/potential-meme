@@ -1,4 +1,4 @@
-namespace ToDoList.API;
+namespace Cataloguer.API;
 
 public class WeatherForecast
 {
