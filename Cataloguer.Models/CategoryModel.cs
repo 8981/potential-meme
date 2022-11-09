@@ -1,4 +1,4 @@
-namespace Cataloguer.Models.ViewModel
+namespace Cataloguer.Models
 {
     public class CategoryModel
     {
