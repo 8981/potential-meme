@@ -351,4 +351,4 @@ MigrationBackup/
 .ionide/
 
 # Diogram files
-#*.dio
+*.dio
