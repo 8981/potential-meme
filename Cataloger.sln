@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cataloger.API", "Cataloger.API\Cataloger.API.csproj", "{B1A904E8-4A1A-4E3E-A257-DEC3917E5EBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cataloger.Model", "Cataloger.Model\Cataloger.Model.csproj", "{86CF1B7C-9261-4B7C-A834-0654AB229680}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cataloger.Models", "Cataloger.Models\Cataloger.Models.csproj", "{86CF1B7C-9261-4B7C-A834-0654AB229680}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
