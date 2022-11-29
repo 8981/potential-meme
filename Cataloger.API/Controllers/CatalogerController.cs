@@ -93,7 +93,8 @@ namespace Cataloger.API.Controllers
             _context.Movies.Add(movieModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetMovieModel", new { id = movieModel.Id }, movieModel);
+            //return CreatedAtAction("GetMovieModel", new { id = movieModel.Id }, movieModel);
+            return CreatedAtAction(nameof(GetMovieModel), new { id = movieModel.Id}, movieModel);
         }
 
         // DELETE: api/Cataloger/5
