@@ -1,6 +1,6 @@
-namespace Cataloger.Model.Movie;
+namespace Cataloger.Model;
 
-public class MovieCategoryModel
+public class MovieCategory
 {
     public int Id { get; set; }
     public string? CategoryTitle {get; set;}

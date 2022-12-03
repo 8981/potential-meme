@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Cataloger.Model;
-using Cataloger.Model.Movie;
 
 namespace Cataloger.API.Controllers
 {
@@ -23,7 +22,7 @@ namespace Cataloger.API.Controllers
 
         // GET: api/Cataloger
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MovieModel>>> GetMovies()
+        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
         {
           if (_context.Movies == null)
           {
@@ -34,33 +33,33 @@ namespace Cataloger.API.Controllers
 
         // GET: api/Cataloger/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<MovieModel>> GetMovieModel(int id)
+        public async Task<ActionResult<Movie>> GetMovie(int id)
         {
           if (_context.Movies == null)
           {
               return NotFound();
           }
-            var movieModel = await _context.Movies.FindAsync(id);
+            var movie = await _context.Movies.FindAsync(id);
 
-            if (movieModel == null)
+            if (movie == null)
             {
                 return NotFound();
             }
 
-            return movieModel;
+            return movie;
         }
 
         // PUT: api/Cataloger/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMovieModel(int id, MovieModel movieModel)
+        public async Task<IActionResult> PutMovieModel(int id, Movie movie)
         {
-            if (id != movieModel.Id)
+            if (id != movie.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(movieModel).State = EntityState.Modified;
+            _context.Entry(movie).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +67,7 @@ namespace Cataloger.API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MovieModelExists(id))
+                if (!MovieExists(id))
                 {
                     return NotFound();
                 }
@@ -84,40 +83,40 @@ namespace Cataloger.API.Controllers
         // POST: api/Cataloger
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<MovieModel>> PostMovieModel(MovieModel movieModel)
+        public async Task<ActionResult<Movie>> PostMovieModel(Movie movie)
         {
           if (_context.Movies == null)
           {
               return Problem("Entity set 'CatalogerContext.Movies'  is null.");
           }
-            _context.Movies.Add(movieModel);
+            _context.Movies.Add(movie);
             await _context.SaveChangesAsync();
 
             //return CreatedAtAction("GetMovieModel", new { id = movieModel.Id }, movieModel);
-            return CreatedAtAction(nameof(GetMovieModel), new { id = movieModel.Id}, movieModel);
+            return CreatedAtAction(nameof(GetMovie), new { id = movie.Id}, movie);
         }
 
         // DELETE: api/Cataloger/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteMovieModel(int id)
+        public async Task<IActionResult> DeleteMovie(int id)
         {
             if (_context.Movies == null)
             {
                 return NotFound();
             }
-            var movieModel = await _context.Movies.FindAsync(id);
-            if (movieModel == null)
+            var movie = await _context.Movies.FindAsync(id);
+            if (movie == null)
             {
                 return NotFound();
             }
 
-            _context.Movies.Remove(movieModel);
+            _context.Movies.Remove(movie);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool MovieModelExists(int id)
+        private bool MovieExists(int id)
         {
             return (_context.Movies?.Any(e => e.Id == id)).GetValueOrDefault();
         }

@@ -1,4 +1,3 @@
-using Cataloger.Model.Movie;
 using Microsoft.EntityFrameworkCore;
 namespace Cataloger.Model;
 
@@ -9,5 +8,5 @@ public class CatalogerContext : DbContext
 
     }
 
-    public DbSet<MovieModel> Movies {get; set;} = null!;
+    public DbSet<Movie> Movies {get; set;} = null!;
 }
