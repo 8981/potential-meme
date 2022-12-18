@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cataloger.API", "Cataloger.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cataloger.Models", "Cataloger.Models\Cataloger.Models.csproj", "{86CF1B7C-9261-4B7C-A834-0654AB229680}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cataloger.DataAccess.Postgres", "Cataloger.DataAccess.Postgres\Cataloger.DataAccess.Postgres.csproj", "{477B016B-4099-474E-9ED4-C3F1E3035DB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{86CF1B7C-9261-4B7C-A834-0654AB229680}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86CF1B7C-9261-4B7C-A834-0654AB229680}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86CF1B7C-9261-4B7C-A834-0654AB229680}.Release|Any CPU.Build.0 = Release|Any CPU
+		{477B016B-4099-474E-9ED4-C3F1E3035DB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{477B016B-4099-474E-9ED4-C3F1E3035DB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{477B016B-4099-474E-9ED4-C3F1E3035DB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{477B016B-4099-474E-9ED4-C3F1E3035DB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

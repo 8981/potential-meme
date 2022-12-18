@@ -1,0 +1,13 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  cataloger_db:
+    container_name: cataloger_db 
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password123
+    ports:
+      - 15432:5432

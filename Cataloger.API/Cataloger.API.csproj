@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cataloger.Models\Cataloger.Models.csproj" />
+    <ProjectReference Include="..\Cataloger.DataAccess.Postgres\Cataloger.DataAccess.Postgres.csproj" />
   </ItemGroup>
 
 </Project>

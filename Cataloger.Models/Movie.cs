@@ -1,11 +1,12 @@
-﻿namespace Cataloger;
+﻿namespace Cataloger.Model;
 
 public class Movie
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     public string? Title { get; set; }
      public string? NameDirector { get; set; }
-    public string? Year { get; set; }
+    public DateTimeOffset ReleaseDate { get; set; }
     public string? Country { get; set; }
+    public string? Description {get; set;}
 
 }
