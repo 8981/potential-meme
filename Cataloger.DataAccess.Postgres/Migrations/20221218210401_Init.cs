@@ -16,11 +16,11 @@ namespace Cataloger.DataAccess.Postgres.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    Title = table.Column<string>(type: "text", nullable: true),
-                    NameDirector = table.Column<string>(type: "text", nullable: true),
+                    Title = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: true),
+                    NameDirector = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: true),
                     ReleaseDate = table.Column<DateTimeOffset>(type: "timestamp with time zone", nullable: false),
-                    Country = table.Column<string>(type: "text", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true),
+                    Country = table.Column<string>(type: "character varying(250)", maxLength: 250, nullable: true),
+                    Description = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
                     UserId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>

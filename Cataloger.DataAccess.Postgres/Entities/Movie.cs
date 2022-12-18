@@ -20,10 +20,10 @@ public sealed class MovieEntityConfiguration : IEntityTypeConfiguration<Movie>
 {
     public void Configure(EntityTypeBuilder<Movie> builder)
     {
-    //    builder.HasKey(x => x.Id);
-    //    builder.Property(x => x.Title).HasMaxLength(250);
-    //    builder.Property(x => x.NameDirector).HasMaxLength(250);
-    //    builder.Property(x => x.Country).HasMaxLength(250);
-    //    builder.Property(x => x.Description).HasMaxLength(50);
+       builder.HasKey(x => x.Id);
+       builder.Property(x => x.Title).HasMaxLength(250);
+       builder.Property(x => x.NameDirector).HasMaxLength(250);
+       builder.Property(x => x.Country).HasMaxLength(250);
+       builder.Property(x => x.Description).HasMaxLength(50);
     }
 }

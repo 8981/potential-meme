@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Cataloger.DataAccess.Postgres.Migrations
 {
     [DbContext(typeof(CatalogerDbContext))]
-    [Migration("20221218001512_Init")]
+    [Migration("20221218210401_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -32,19 +32,23 @@ namespace Cataloger.DataAccess.Postgres.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("Country")
-                        .HasColumnType("text");
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<string>("NameDirector")
-                        .HasColumnType("text");
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
 
                     b.Property<DateTimeOffset>("ReleaseDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Title")
-                        .HasColumnType("text");
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
