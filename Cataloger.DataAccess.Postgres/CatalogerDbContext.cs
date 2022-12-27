@@ -11,6 +11,7 @@ public class CatalogerDbContext : DbContext
 
     public DbSet<Movie>? Movies {get; set;}
     public DbSet<User>? Users {get; set;}
+    public DbSet<Role>? Roles {get; set;}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

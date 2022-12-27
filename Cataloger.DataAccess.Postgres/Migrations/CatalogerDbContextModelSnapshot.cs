@@ -55,10 +55,44 @@ namespace Cataloger.DataAccess.Postgres.Migrations
                     b.ToTable("Movies");
                 });
 
-            modelBuilder.Entity("Cataloger.DataAccess.Postgres.Entities.User", b =>
+            modelBuilder.Entity("Cataloger.DataAccess.Postgres.Entities.Role", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Title")
+                        .HasMaxLength(250)
+                        .HasColumnType("character varying(250)");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("UserRoleId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserRoleId");
+
+                    b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("Cataloger.DataAccess.Postgres.Entities.User", b =>
+                {
+                    b.Property<int>("RoleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("RoleId"));
+
+                    b.Property<DateTime>("CreateAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("Id")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Login")
@@ -69,11 +103,19 @@ namespace Cataloger.DataAccess.Postgres.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("character varying(250)");
 
+                    b.Property<Guid?>("RoleId1")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("UserName")
                         .HasMaxLength(250)
                         .HasColumnType("character varying(250)");
 
-                    b.HasKey("Id");
+                    b.HasKey("RoleId");
+
+                    b.HasIndex("RoleId1");
 
                     b.ToTable("Users");
                 });
@@ -83,14 +125,30 @@ namespace Cataloger.DataAccess.Postgres.Migrations
                     b.Property<Guid>("MoviesId")
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("UsersId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("UsersRoleId")
+                        .HasColumnType("integer");
 
-                    b.HasKey("MoviesId", "UsersId");
+                    b.HasKey("MoviesId", "UsersRoleId");
 
-                    b.HasIndex("UsersId");
+                    b.HasIndex("UsersRoleId");
 
                     b.ToTable("MovieUser");
+                });
+
+            modelBuilder.Entity("Cataloger.DataAccess.Postgres.Entities.Role", b =>
+                {
+                    b.HasOne("Cataloger.DataAccess.Postgres.Entities.User", null)
+                        .WithMany("Roles")
+                        .HasForeignKey("UserRoleId");
+                });
+
+            modelBuilder.Entity("Cataloger.DataAccess.Postgres.Entities.User", b =>
+                {
+                    b.HasOne("Cataloger.DataAccess.Postgres.Entities.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId1");
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("MovieUser", b =>
@@ -103,9 +161,14 @@ namespace Cataloger.DataAccess.Postgres.Migrations
 
                     b.HasOne("Cataloger.DataAccess.Postgres.Entities.User", null)
                         .WithMany()
-                        .HasForeignKey("UsersId")
+                        .HasForeignKey("UsersRoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Cataloger.DataAccess.Postgres.Entities.User", b =>
+                {
+                    b.Navigation("Roles");
                 });
 #pragma warning restore 612, 618
         }
