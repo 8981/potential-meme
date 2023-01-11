@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using Cataloger.Model;
+using Cataloger.DataAccess.Postgres.Entities;
 using Cataloger.DataAccess.Postgres;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cataloger.API.Controllers
 {
@@ -17,30 +18,38 @@ namespace Cataloger.API.Controllers
 
         // GET
         [HttpGet]
-        public async Task<ActionResult<Movie>> GetMovies()
+        public async Task<ActionResult> GetMovies()
         {
           return Ok();
         }
 
         // GET
         [HttpGet("{id}")]
-        public async Task<ActionResult<Movie>> GetMovie(int id)
+        public async Task<ActionResult> GetMovie()
         {
             return Ok();
         }
 
         // PUT
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutMovieModel(Guid id, Movie movie)
+        public async Task<IActionResult> PutMovieModel()
         {
             return Ok();
         }
 
-        // POST
+        // Create new 
         [HttpPost]
-        public async Task<ActionResult<Movie>> PostMovieModel(Movie movie)
+        public async Task<ActionResult> PostMovieModel()
         {
-          return Ok();
+            var movie = new Movie
+            {
+                Id = Guid.NewGuid(),
+                //Title = 
+            };
+            _context.Movies.Add(movie);
+            await _context.SaveChangesAsync();
+
+            return Ok(movie.Id);
         }
 
         // DELETE
